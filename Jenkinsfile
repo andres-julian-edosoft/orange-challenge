@@ -14,6 +14,11 @@ node {
       dir('build') {
           // git branch: branchName, credentialsId: 	gitCredentials, url: repoUrl
           git branch: branchName, url: repoUrl
-      }     
-  }       
+      }
+  }    
+
+  stage('Build') {
+      build(job: "build/Jenkinsfile")
+
+  }
 }
