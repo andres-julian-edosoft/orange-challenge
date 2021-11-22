@@ -15,7 +15,12 @@ node {
           // git branch: branchName, credentialsId: 	gitCredentials, url: repoUrl
           git branch: branchName, url: repoUrl
       }
-  }    
+  }
+
+  stage('test') {
+      sh "ls -al; pwd"
+      sh "ls -la build"
+  }
 
   stage('Build') {
       build(job: "build/Jenkinsfile")
