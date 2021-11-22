@@ -1,7 +1,7 @@
 // String branchName = env.BRANCH_NAME
 String branchName = "master"
 // String gitCredentials = "CREDENTIAL_ID"
-// String repoUrl = "https://github.com/luishernandez25/easyTest"
+String repoUrl = "https://github.com/luishernandez25/easyTest"
 
 podTemplate(containers: [
     containerTemplate(name: 'maven', image: 'maven:3.8.1-jdk-8', command: 'sleep', args: '99d'),
