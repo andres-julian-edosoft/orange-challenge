@@ -1,5 +1,5 @@
 // String branchName = env.BRANCH_NAME
-String branchName = "main"
+String branchName = "master"
 // String gitCredentials = "CREDENTIAL_ID"
 String repoUrl = "https://github.com/luishernandez25/easyTest"
 
