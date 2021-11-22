@@ -19,11 +19,11 @@ node {
 
   stage('test') {
       sh "ls -al; pwd"
-      sh "ls -la build"
+      sh "ls -la"
   }
 
   stage('Build') {
-      build(job: "build/Jenkinsfile")
-
+      jenkins = fileLoader.load('build/Jenkinsfile')
+      jenkins.start()
   }
 }
