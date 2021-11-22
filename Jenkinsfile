@@ -22,8 +22,6 @@ pipeline {
         '''
     }
 
-    }
-
     stages {
         stage('Clone') {
             steps {
