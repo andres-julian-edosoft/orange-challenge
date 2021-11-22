@@ -15,28 +15,26 @@ podTemplate(containers: [
             defaultContainer 'maven'  // define a default container if more than a few stages use it, will default to jnlp container
         }
 
-        steps {
-            stage('Clone') {
-                // Clones the repository from the current branch name
-                echo 'Make the output directory'
-                sh 'mkdir -p build'
+        stage('Clone') {
+            // Clones the repository from the current branch name
+            echo 'Make the output directory'
+            sh 'mkdir -p build'
 
-                echo 'Cloning files from (branch: "' + branchName + '" )'
-                dir('build') {
-                    // git branch: branchName, credentialsId: 	gitCredentials, url: repoUrl
-                    git branch: branchName, url: repoUrl
-                }
+            echo 'Cloning files from (branch: "' + branchName + '" )'
+            dir('build') {
+                // git branch: branchName, credentialsId: 	gitCredentials, url: repoUrl
+                git branch: branchName, url: repoUrl
             }
-            
-            stage('test') {
-                sh "ls -al; pwd"
-                sh "ls -la"
-            }
+        }
+        
+        stage('test') {
+            sh "ls -al; pwd"
+            sh "ls -la"
+        }
 
-            stage('Build') {
-                jenkins = fileLoader.load('build/Jenkinsfile')
-                jenkins.start()
-            }
+        stage('Build') {
+            jenkins = fileLoader.load('build/Jenkinsfile')
+            jenkins.start()
         }
     }
 }
