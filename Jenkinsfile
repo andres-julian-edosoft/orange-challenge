@@ -23,9 +23,11 @@ podTemplate(containers: [
 
                 echo 'Cloning files from (branch: "' + branchName + '" )'
                 dir('build') {
-                // git branch: branchName, credentialsId: 	gitCredentials, url: repoUrl
-                git branch: branchName, url: repoUrl
+                    // git branch: branchName, credentialsId: 	gitCredentials, url: repoUrl
+                    git branch: branchName, url: repoUrl
+                }
             }
+            
             stage('test') {
                 sh "ls -al; pwd"
                 sh "ls -la"
