@@ -1,15 +1,27 @@
 pipeline {
 
-    agent {
-        kubernetes {
-        inheritFrom 'mypod'
-        yaml '''
-      spec:
-        containers:
-        - name: maven
-          image: maven:3.8.1-jdk-11
-'''
-        }
+    kubernetes {
+      yaml '''
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          labels:
+            some-label: some-label-value
+        spec:
+          containers:
+          - name: maven
+            image: maven:alpine
+            command:
+            - cat
+            tty: true
+          - name: busybox
+            image: busybox
+            command:
+            - cat
+            tty: true
+        '''
+    }
+
     }
 
     stages {
