@@ -7,19 +7,19 @@ pipeline {
             kind: Pod
             metadata:
             labels:
-                some-label: some-label-value
+              some-label: some-label-value
             spec:
             containers:
             - name: maven
-                image: "maven:alpine"
-                command:
-                - cat
-                tty: true
+              image: "maven:alpine"
+              command:
+              - cat
+              tty: true
             - name: busybox
-                image: busybox
-                command:
-                - cat
-                tty: true
+              image: busybox
+              command:
+              - cat
+              tty: true
             '''
         }
     }
