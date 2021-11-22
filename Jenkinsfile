@@ -1,9 +1,10 @@
-String branchName = env.BRANCH_NAME
+// String branchName = env.BRANCH_NAME
+String branchName = "main"
 // String gitCredentials = "CREDENTIAL_ID"
 String repoUrl = "https://github.com/luishernandez25/easyTest"
 
 node {
-  // Start Stages
+  // Start Stages   
   stage('Clone') {
       // Clones the repository from the current branch name
       echo 'Make the output directory'
