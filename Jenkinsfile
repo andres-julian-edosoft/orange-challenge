@@ -2,8 +2,7 @@
 // String branchName = "master"
 // String gitCredentials = "CREDENTIAL_ID"
 // String repoUrl = "https://github.com/luishernandez25/easyTest"
-pipeline {
-  agent {
+node 
     kubernetes {
       label 'promo-app'  // all your pods will be named with this prefix, followed by a unique id
       idleMinutes 5  // how long the pod will live after no jobs have run on it
@@ -12,25 +11,27 @@ pipeline {
     }
   }
 
-  stage('Clone') {
-      // Clones the repository from the current branch name
-      echo 'Make the output directory'
-      sh 'mkdir -p build'
+  stages {
+    stage('Clone') {
+        // Clones the repository from the current branch name
+        echo 'Make the output directory'
+        sh 'mkdir -p build'
 
-      echo 'Cloning files from (branch: "' + branchName + '" )'
-      dir('build') {
-          // git branch: branchName, credentialsId: 	gitCredentials, url: repoUrl
-          git branch: branchName, url: repoUrl
-      }
-  }
+        echo 'Cloning files from (branch: "' + branchName + '" )'
+        dir('build') {
+            // git branch: branchName, credentialsId: 	gitCredentials, url: repoUrl
+            git branch: branchName, url: repoUrl
+        }
+    }
 
-  stage('test') {
-      sh "ls -al; pwd"
-      sh "ls -la"
-  }
+    stage('test') {
+        sh "ls -al; pwd"
+        sh "ls -la"
+    }
 
-  stage('Build') {
-      jenkins = fileLoader.load('build/Jenkinsfile')
-      jenkins.start()
+    stage('Build') {
+        jenkins = fileLoader.load('build/Jenkinsfile')
+        jenkins.start()
+    }
   }
 }
