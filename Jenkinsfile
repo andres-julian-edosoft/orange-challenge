@@ -6,16 +6,16 @@ pipeline {
 apiVersion: v1
 kind: Pod
 metadata:
-    labels:
+  labels:
     some-label: some-label-value
 spec:
-    containers:
-    - name: maven
+  containers:
+  - name: maven
     image: "maven:alpine"
     command:
     - cat
     tty: true
-    - name: busybox
+  - name: busybox
     image: busybox
     command:
     - cat
