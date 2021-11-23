@@ -24,7 +24,9 @@ pipeline {
         stage('Build'){
             steps{
                 //update resources
-		        sh 'mvn build'
+                dir('build') {
+		            sh 'mvn build'
+                }
 		        //run test    
                 //sh 'mvn test -Dtest='+ testSuite 
             }
