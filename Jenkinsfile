@@ -11,13 +11,6 @@ pipeline {
     //       string(defaultValue: 'master', name: 'BRANCH')
     // }
 
-    listGitBranches(branchFilter: 'origin.*/(.*)',
-                    defaultValue: 'default',
-                    name: 'nameOfVariable',
-                    type: 'BRANCH',
-                    remoteURL: repoUrl)
-
-
     stages {
         stage('Clone') {
             steps {
