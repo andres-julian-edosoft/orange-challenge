@@ -6,9 +6,9 @@ jenkins:
   - kubernetes:
       containerCap: 10
       containerCapStr: "10"
-      jenkinsUrl: "http://10.98.82.143:8080"
+      jenkinsUrl: "http://jenkins:8080"
       name: "kubernetes"
-      namespace: "orange"
+      namespace: "jenkins"
       templates:
       - containers:
         - image: "jenkins/jnlp-agent-maven:latest"
@@ -23,7 +23,7 @@ jenkins:
         id: "7f03f4a0-a9b0-464f-a29d-6ee4fd7c1bba"
         label: "builder"
         name: "jenkins-builder"
-        namespace: "orange"
+        namespace: "jenkins"
         yamlMergeStrategy: "override"
   crumbIssuer:
     standard:
@@ -88,7 +88,7 @@ unclassified:
   gitHubConfiguration:
     apiRateLimitChecker: ThrottleForNormalize
   gitHubPluginConfig:
-    hookUrl: "http://192.168.49.2:30593/github-webhook/"
+    hookUrl: "http://jenkins:8080/github-webhook/"
   gitSCM:
     addGitTagAction: false
     allowSecondFetch: false

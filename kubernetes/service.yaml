@@ -4,7 +4,6 @@ metadata:
   labels:
     run: jenkins
   name: jenkins
-  namespace: orange
 spec:
 # externalTrafficPolicy: Cluster
   ports:
