@@ -10,7 +10,6 @@ pipeline {
           choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
           string(defaultValue: 'master', name: 'BRANCH')
           listGitBranches(branchFilter: 'origin.*/(.*)',
-                    defaultValue: 'default',
                     name: 'nameOfVariable',
                     type: 'BRANCH',
                     remoteURL: repoUrl)
