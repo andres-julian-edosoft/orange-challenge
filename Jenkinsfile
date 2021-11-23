@@ -1,3 +1,6 @@
+repoUrl = "https://github.com/luishernandez25/easyTest"
+branchName = "master"
+
 pipeline {
     agent {
         node("builder")
