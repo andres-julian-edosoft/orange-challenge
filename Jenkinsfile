@@ -31,12 +31,8 @@ pipeline {
 
         stage('Build'){
             steps{
-                //update resources
-                dir('build') {
-		            sh 'mvn build'
-                }
-		        //run test    
-                //sh 'mvn test -Dtest='+ testSuite 
+                // Build
+                echo "Do something..."
             }
         }
     }
