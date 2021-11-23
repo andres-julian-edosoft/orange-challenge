@@ -7,10 +7,16 @@ metadata:
   namespace: orange
 spec:
   containers:
-  - image: jenkins-orange:0.0.1
+  - image: jenkins-orange:0.0.2
     imagePullPolicy: Never
     name: jenkins
-    resources: {}
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "256Mi"
+      limits:
+        cpu: "1000m"
+        memory: "1Gi"
     terminationMessagePath: /dev/termination-log
     terminationMessagePolicy: File
     volumeMounts:

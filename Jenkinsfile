@@ -7,8 +7,6 @@ pipeline {
     }
 
     parameters {
-          string(name: 'NAME', defaultValue: 'Moises', description: 'Nombre')
-          string(name: 'LASTNAME', defaultValue: 'Lodeiro', description: 'Apellido')
           choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
           string(defaultValue: 'master', name: 'BRANCH')
     }
@@ -33,6 +31,15 @@ pipeline {
             steps{
                 // Build
                 echo "Do something..."
+
+                a = listGitBranches(
+                        branchFilter: 'origin.*/(.*)',
+                        defaultValue: 'default',
+                        name: 'nameOfVariable',
+                        type: 'BRANCH',
+                        remoteURL: repoUrl)
+                echo a
+
             }
         }
     }
