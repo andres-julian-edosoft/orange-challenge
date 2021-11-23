@@ -11,6 +11,12 @@ pipeline {
     //       string(defaultValue: 'master', name: 'BRANCH')
     // }
 
+    listGitBranches(branchFilter: 'origin.*/(.*)',
+                    defaultValue: 'default',
+                    name: 'nameOfVariable',
+                    type: 'BRANCH',
+                    remoteURL: repoUrl)
+
 
     stages {
         stage('Clone') {
@@ -31,15 +37,6 @@ pipeline {
             steps{
                 // Build
                 echo "Do something..."
-
-                a = listGitBranches(
-                        branchFilter: 'origin.*/(.*)',
-                        defaultValue: 'default',
-                        name: 'nameOfVariable',
-                        type: 'BRANCH',
-                        remoteURL: repoUrl)
-                echo a
-
             }
         }
     }
