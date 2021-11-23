@@ -6,13 +6,31 @@ jenkins:
   - kubernetes:
       containerCap: 10
       containerCapStr: "10"
+      jenkinsUrl: "http://10.98.82.143:8080"
       name: "kubernetes"
       namespace: "orange"
+      templates:
+      - containers:
+        - image: "jenkins/jnlp-agent-maven:latest"
+          livenessProbe:
+            failureThreshold: 0
+            initialDelaySeconds: 0
+            periodSeconds: 0
+            successThreshold: 0
+            timeoutSeconds: 0
+          name: "jnlp"
+          workingDir: "/home/jenkins/agent"
+        id: "7f03f4a0-a9b0-464f-a29d-6ee4fd7c1bba"
+        label: "builder"
+        name: "jenkins-builder"
+        namespace: "orange"
+        yamlMergeStrategy: "override"
   crumbIssuer:
     standard:
       excludeClientIPFromCrumb: false
   disableRememberMe: false
   labelAtoms:
+  - name: "builder"
   - name: "master"
   markupFormatter: "plainText"
   mode: NORMAL

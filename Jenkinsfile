@@ -6,6 +6,14 @@ pipeline {
         node("builder")
     }
 
+    parameters {
+          string(name: 'NAME', defaultValue: 'Moises', description: 'Nombre')
+          string(name: 'LASTNAME', defaultValue: 'Lodeiro', description: 'Apellido')
+          choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+          string(defaultValue: 'master', name: 'BRANCH')
+    }
+
+
     stages {
         stage('Clone') {
             steps {
